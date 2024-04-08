@@ -21,9 +21,12 @@ const Projects: React.FC = () => {
 
   return (
     <Box sx={{ marginTop: '50px' }}>
-      <Typography variant='h4' align='center'>
-        Projects
-      </Typography>
+      <Box sx={{ marginBottom: '20px' }}>
+        <Typography variant='h4' align='center'>
+          Projects
+        </Typography>
+      </Box>
+
       {data?.projects.length !== 0 ? (
         <Grid container spacing={2} justifyContent='center'>
           {data?.projects.map((project) => (
