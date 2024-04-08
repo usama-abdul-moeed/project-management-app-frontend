@@ -12,6 +12,7 @@ import {
 import { useQuery } from '@apollo/client';
 import { GET_CLIENTS } from '../queries/clientQueries';
 import DeleteIcon from '@mui/icons-material/Delete';
+import Spinner from './Spinner';
 
 type Client = {
   id: number;
@@ -23,7 +24,7 @@ type Client = {
 const Clients: React.FC = () => {
   const { loading, error, data } = useQuery<{ clients: Client[] }>(GET_CLIENTS);
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <Spinner />;
   if (error) return <p>Something went wrong</p>;
 
   return (
