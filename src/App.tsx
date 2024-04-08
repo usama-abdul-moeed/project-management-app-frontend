@@ -2,6 +2,7 @@ import Header from './component/Header';
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 import Clients from './component/Clients';
 import AddClientModal from './component/AddClientModal';
+import Projects from './component/Projects';
 
 const client = new ApolloClient({
   uri: 'http://localhost:5000/graphql',
@@ -13,8 +14,9 @@ function App() {
     <>
       <ApolloProvider client={client}>
         <Header />
-        <AddClientModal />
         <Clients />
+        <AddClientModal />
+        <Projects />
       </ApolloProvider>
     </>
   );
