@@ -9,10 +9,11 @@ import {
   Paper,
   IconButton,
 } from '@mui/material';
-import { useQuery } from '@apollo/client';
+import { useQuery, useMutation } from '@apollo/client';
 import { GET_CLIENTS } from '../queries/clientQueries';
 import DeleteIcon from '@mui/icons-material/Delete';
 import Spinner from './Spinner';
+import { DELETE_CLIENT } from '../mutations/clientMutations';
 
 type Client = {
   id: number;
@@ -23,6 +24,19 @@ type Client = {
 
 const Clients: React.FC = () => {
   const { loading, error, data } = useQuery<{ clients: Client[] }>(GET_CLIENTS);
+
+  const [deleteClient] = useMutation(DELETE_CLIENT);
+
+  const handleDeleteClient = async (clientId: number) => {
+    try {
+      await deleteClient({
+        variables: { id: clientId },
+        refetchQueries: [{ query: GET_CLIENTS }],
+      });
+    } catch (error) {
+      console.error('Error deleting client:', error);
+    }
+  };
 
   if (loading) return <Spinner />;
   if (error) return <p>Something went wrong</p>;
@@ -51,7 +65,11 @@ const Clients: React.FC = () => {
                     <TableCell>{client.email}</TableCell>
                     <TableCell>{client.phone}</TableCell>
                     <TableCell>
-                      <IconButton>
+                      <IconButton
+                        onClick={() => {
+                          handleDeleteClient(client.id);
+                        }}
+                      >
                         <DeleteIcon color='error'></DeleteIcon>
                       </IconButton>
                     </TableCell>
