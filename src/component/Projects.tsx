@@ -32,6 +32,7 @@ const Projects: React.FC = () => {
           {data?.projects.map((project) => (
             <Grid item xs={12} sm={6} md={4} key={project.id}>
               <ProjectCard
+                id={project.id}
                 name={project.name}
                 description={project.description}
                 status={project.status}
