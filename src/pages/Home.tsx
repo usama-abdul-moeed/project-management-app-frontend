@@ -1,6 +1,7 @@
 import Clients from '../component/Clients';
 import AddClientModal from '../component/AddClientModal';
 import Projects from '../component/Projects';
+import AddProjectModal from '../component/AddProjectModal';
 
 const Home = () => {
   return (
@@ -8,6 +9,7 @@ const Home = () => {
       <Clients />
       <AddClientModal />
       <Projects />
+      <AddProjectModal />
     </>
   );
 };
