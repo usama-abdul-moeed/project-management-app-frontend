@@ -3,6 +3,7 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
 import TextField from '@mui/material/TextField';
+import Typography from '@mui/material/Typography';
 import { ADD_CLIENT } from '../mutations/clientMutations';
 import { GET_CLIENTS } from '../queries/clientQueries';
 import { useMutation } from '@apollo/client';
@@ -76,6 +77,9 @@ export default function AddClientModal() {
             width: '90%',
           }}
         >
+          <Typography variant='h5' gutterBottom>
+            Add New Client
+          </Typography>
           <form onSubmit={handleSubmit}>
             <TextField
               label='Name'
@@ -85,6 +89,7 @@ export default function AddClientModal() {
               name='name'
               value={formData.name}
               onChange={handleChange}
+              required
             />
             <TextField
               label='Email'
@@ -94,6 +99,7 @@ export default function AddClientModal() {
               name='email'
               value={formData.email}
               onChange={handleChange}
+              required
             />
             <TextField
               label='Phone'
@@ -103,6 +109,7 @@ export default function AddClientModal() {
               name='phone'
               value={formData.phone}
               onChange={handleChange}
+              required
             />
             <Button type='submit' variant='contained' color='primary'>
               Submit
