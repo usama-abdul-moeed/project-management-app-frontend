@@ -4,6 +4,7 @@ import { useQuery } from '@apollo/client';
 import { GET_PROJECT } from '../queries/projectQueries';
 import { Box, Typography, Divider, Button, Paper } from '@mui/material';
 import { ArrowBack } from '@mui/icons-material';
+import EditProjectModal from '../component/EditProjectModal';
 
 const Project = () => {
   const { id } = useParams();
@@ -53,6 +54,7 @@ const Project = () => {
               Phone: {project.client.phone}
             </Typography>
           </Paper>
+          <EditProjectModal project={project} />
           <Button
             variant='contained'
             color='primary'
