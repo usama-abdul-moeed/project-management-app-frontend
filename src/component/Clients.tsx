@@ -11,6 +11,7 @@ import {
 } from '@mui/material';
 import { useQuery, useMutation } from '@apollo/client';
 import { GET_CLIENTS } from '../queries/clientQueries';
+import { GET_PROJECTS } from '../queries/projectQueries';
 import DeleteIcon from '@mui/icons-material/Delete';
 import Spinner from './Spinner';
 import { DELETE_CLIENT } from '../mutations/clientMutations';
@@ -31,7 +32,7 @@ const Clients: React.FC = () => {
     try {
       await deleteClient({
         variables: { id: clientId },
-        refetchQueries: [{ query: GET_CLIENTS }],
+        refetchQueries: [{ query: GET_CLIENTS }, { query: GET_PROJECTS }],
       });
     } catch (error) {
       console.error('Error deleting client:', error);
